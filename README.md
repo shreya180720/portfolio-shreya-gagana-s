@@ -118,6 +118,6 @@ npm run dev
 
 ## Contact
 
-📧 danda108@usf.edu
+📧 shreyadanda18@gmail.com
 🔗 https://www.linkedin.com/in/srishreya-danda-2b27141a2/
 ---
