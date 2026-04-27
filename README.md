@@ -69,7 +69,7 @@ Designed with a focus on:
 
 ## 📁 Featured Project
 
-### 🏦 Trading & Brokerage Revenue Intelligence System
+###  Trading & Brokerage Revenue Intelligence System
 
 A real-world financial analytics system designed to analyze:
 
@@ -100,7 +100,7 @@ public/
   screenshots/
   resume/
 ```
-## 🚀 Getting Started
+##  Getting Started
 
 ```bash
 # Clone the repository
@@ -116,7 +116,7 @@ npm install
 npm run dev
 ```
 ---
-###Contact
+##Contact
 
-📧 danda108@usf.edu
-🔗 https://www.linkedin.com/in/srishreya-danda-2b27141a2/
+###📧 danda108@usf.edu
+###🔗 https://www.linkedin.com/in/srishreya-danda-2b27141a2/
