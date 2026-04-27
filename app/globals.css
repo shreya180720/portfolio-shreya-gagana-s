@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #f5f7ff;
+  --section-alt: #ffffff;
+  --card: #ffffff;
+  --border: rgba(148, 163, 184, 0.18);
+  --blue: #2563eb;
+  --indigo: #4f46e5;
+  --text: #0f1729;
+  --muted: #64748b;
+}
+
+.dark {
+  --bg: #0f0a03;
+  --section-alt: #1c1108;
+  --card: #1c1108;
+  --border: rgba(251, 146, 60, 0.14);
+  --blue: #f97316;
+  --indigo: #fb923c;
+  --text: #fef3e2;
+  --muted: #a07850;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(ellipse 80% 55% at 15% 0%,    rgba(99, 102, 241, 0.09) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 50% at 85% 18%,   rgba(167, 139, 250, 0.07) 0%, transparent 55%),
+    radial-gradient(ellipse 65% 55% at 50% 95%,   rgba(99, 102, 241, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 0% 52%,    rgba(79, 70, 229, 0.05)  0%, transparent 50%),
+    radial-gradient(ellipse 50% 40% at 100% 58%,  rgba(124, 58, 237, 0.05) 0%, transparent 50%),
+    #f5f7ff;
+  background-attachment: fixed;
+  color: var(--text);
+  font-family: var(--font-inter), sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.dark body {
+  background: var(--bg);
+  background-attachment: scroll;
+}
+
+@supports (-webkit-touch-callout: none) {
+  body {
+    background-attachment: scroll;
+  }
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #eef1ff; }
+::-webkit-scrollbar-thumb { background: rgba(79, 70, 229, 0.35); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(79, 70, 229, 0.55); }
+
+.dark ::-webkit-scrollbar-track { background: #1a0f05; }
+.dark ::-webkit-scrollbar-thumb { background: rgba(249, 115, 22, 0.35); border-radius: 3px; }
+.dark ::-webkit-scrollbar-thumb:hover { background: rgba(249, 115, 22, 0.55); }
+
+::selection {
+  background: rgba(79, 70, 229, 0.15);
+  color: #0f1729;
+}
+
+.dark ::selection {
+  background: rgba(249, 115, 22, 0.2);
+  color: #fef3e2;
+}
+
+.hero-dots {
+  background-image: radial-gradient(rgba(99, 102, 241, 0.10) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+.dark .hero-dots {
+  background-image: radial-gradient(rgba(249, 115, 22, 0.2) 1px, transparent 1px);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.dark .glass-card {
+  background: rgba(28, 17, 8, 0.85);
+  border-color: rgba(251, 146, 60, 0.12);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #2563eb 0%, #4f46e5 60%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dark .gradient-text {
+  background: linear-gradient(135deg, #f97316 0%, #fb923c 50%, #fbbf24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-alt {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.dark .section-alt {
+  background: #1c1108;
+}
+
+.timeline-line {
+  background: linear-gradient(
+    to bottom,
+    rgba(37, 99, 235, 0.5),
+    rgba(79, 70, 229, 0.2),
+    transparent
+  );
+}
+
+.dark .timeline-line {
+  background: linear-gradient(
+    to bottom,
+    rgba(249, 115, 22, 0.5),
+    rgba(251, 146, 60, 0.2),
+    transparent
+  );
+}
