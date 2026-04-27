@@ -90,6 +90,22 @@ body {
   background-image: radial-gradient(rgba(249, 115, 22, 0.2) 1px, transparent 1px);
 }
 
+.hero-orbit-path {
+  filter: drop-shadow(0 0 9px rgba(37, 99, 235, 0.35));
+}
+
+.dark .hero-orbit-path {
+  filter: drop-shadow(0 0 9px rgba(249, 115, 22, 0.46));
+}
+
+.hero-orbit-dot {
+  filter: drop-shadow(0 0 9px rgba(37, 99, 235, 0.65));
+}
+
+.dark .hero-orbit-dot {
+  filter: drop-shadow(0 0 9px rgba(249, 115, 22, 0.75));
+}
+
 .glass-card {
   background: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(12px);
