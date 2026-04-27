@@ -115,8 +115,9 @@ npm install
 # Run development server
 npm run dev
 ```
----
-##Contact
 
-###📧 danda108@usf.edu
-###🔗 https://www.linkedin.com/in/srishreya-danda-2b27141a2/
+## Contact
+
+📧 danda108@usf.edu
+🔗 https://www.linkedin.com/in/srishreya-danda-2b27141a2/
+---
