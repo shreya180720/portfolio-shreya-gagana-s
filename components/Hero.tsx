@@ -119,7 +119,7 @@ export default function Hero() {
 
               <div className="absolute inset-[4px] overflow-hidden rounded-full">
                 <Image
-                  src="/images/GaaGa_img.png"
+                  src="/images/GaaGa_img2.png"
                   alt="Sri Shreya Danda"
                   fill
                   priority
