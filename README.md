@@ -37,20 +37,20 @@ Designed with a focus on:
 
 ---
 
-## 🚀 Tech Stack
+##  Tech Stack
 
-### 📊 Data & Analytics
+###  Data & Analytics
 ![SQL](https://img.shields.io/badge/SQL-336791?style=flat&logo=postgresql&logoColor=white)
 ![Power BI](https://img.shields.io/badge/Power_BI-F2C811?style=flat&logo=powerbi&logoColor=black)
 ![Tableau](https://img.shields.io/badge/Tableau-E97627?style=flat&logo=tableau&logoColor=white)
 ![Excel](https://img.shields.io/badge/Excel-217346?style=flat&logo=microsoft-excel&logoColor=white)
 
-### 🐍 Programming
+###  Programming
 ![Python](https://img.shields.io/badge/Python-3670A0?style=flat&logo=python&logoColor=ffdd54)
 ![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat&logo=pandas&logoColor=white)
 ![NumPy](https://img.shields.io/badge/NumPy-013243?style=flat&logo=numpy&logoColor=white)
 
-### ⚙️ Tools & Platforms
+###  Tools & Platforms
 ![AWS](https://img.shields.io/badge/AWS-FF9900?style=flat&logo=amazon-aws&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=flat&logo=postgresql&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05033?style=flat&logo=git&logoColor=white)
@@ -58,12 +58,12 @@ Designed with a focus on:
 
 ---
 
-## 📊 Key Highlights
+##  Key Highlights
 
-- 📈 Improved operational efficiency by **35%** through data-driven insights  
-- ⚡ Reduced issue resolution time by **22%** via root cause analysis  
-- 🔄 Automated reporting workflows, cutting manual effort by **30%**  
-- 🧠 Built dashboards translating complex data into executive-level insights  
+-  Improved operational efficiency by **35%** through data-driven insights  
+-  Reduced issue resolution time by **22%** via root cause analysis  
+-  Automated reporting workflows, cutting manual effort by **30%**  
+-  Built dashboards translating complex data into executive-level insights  
 
 ---
 
@@ -78,7 +78,7 @@ A real-world financial analytics system designed to analyze:
 - Dormant accounts and retention strategies  
 - Operational inefficiencies affecting business growth  
 
-#### 🔍 Key Contributions:
+####  Key Contributions:
 - Built SQL-based data models for transactional analytics  
 - Developed Power BI dashboards for business decision-making  
 - Performed cohort analysis and revenue segmentation  
@@ -100,11 +100,11 @@ public/
   screenshots/
   resume/
 ```
+## 🚀 Getting Started
 
-##Get started
-
+```bash
 # Clone the repository
-git clone https://github.com/shreya180720/portfolio-shreya-gagana-s.git
+git clone [https://github.com/shreya180720/portfolio-shreya-gagana-s.git](https://github.com/shreya180720/portfolio-shreya-gagana-s.git)
 
 # Navigate into the project
 cd portfolio-shreya-gagana-s
@@ -114,7 +114,7 @@ npm install
 
 # Run development server
 npm run dev
-
+```
 ---
 ###Contact
 
