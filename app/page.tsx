@@ -1,3 +1,5 @@
+import SiteLoader from '@/components/SiteLoader';
+
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import FeaturedWork from '@/components/FeaturedWork';
@@ -11,17 +13,19 @@ import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-transparent dark:bg-[#0f0a03]">
-      <Navbar />
-      <Hero />
-      <FeaturedWork />
-      <DashboardShowcase />
-      <Experience />
-      <Projects />
-      <Insights />
-      <Skills />
-      <Contact />
-      <Footer />
-    </main>
+    <SiteLoader>
+      <main className="min-h-screen bg-transparent dark:bg-[#0f0a03]">
+        <Navbar />
+        <Hero />
+        <FeaturedWork />
+        <DashboardShowcase />
+        <Experience />
+        <Projects />
+        <Insights />
+        <Skills />
+        <Contact />
+        <Footer />
+      </main>
+    </SiteLoader>
   );
 }

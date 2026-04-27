@@ -37,7 +37,14 @@ export default function DashboardShowcase() {
   const [featured, ...rest] = DASHBOARDS;
 
   return (
-    <section id="dashboards" className="py-20 px-6 bg-transparent dark:bg-[#0f0a03]">
+    <motion.section
+      id="dashboards"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.05 }}
+      transition={{ duration: 0.55, ease: 'easeOut' }}
+      className="py-20 px-6 bg-transparent dark:bg-[#0f0a03]"
+    >
       <div className="max-w-5xl mx-auto">
 
         <motion.div {...fade()} className="mb-8">
@@ -49,13 +56,13 @@ export default function DashboardShowcase() {
           </h2>
         </motion.div>
 
-        <motion.div {...fade(0.06)} className="mb-4">
+        <motion.div {...fade(0.06)} className="mb-4 group cursor-default">
           <div className="relative w-full aspect-[16/9] bg-slate-200 dark:bg-[#1c1108] rounded-xl overflow-hidden border border-slate-200 dark:border-orange-900/20 mb-3">
             <Image
               src={featured.image}
               alt={featured.title}
               fill
-              className="object-cover object-top"
+              className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
               sizes="100vw"
             />
           </div>
@@ -67,13 +74,18 @@ export default function DashboardShowcase() {
 
         <div className="grid grid-cols-3 gap-4 mt-4">
           {rest.map((d, i) => (
-            <motion.div key={d.title} {...fade(0.1 + i * 0.06)}>
-              <div className="relative w-full aspect-[4/3] bg-slate-200 dark:bg-[#1c1108] rounded-lg overflow-hidden border border-slate-200 dark:border-orange-900/20 mb-2">
+            <motion.div
+              key={d.title}
+              {...fade(0.1 + i * 0.06)}
+              whileHover={{ y: -5, transition: { type: 'spring', stiffness: 350, damping: 25 } }}
+              className="group cursor-default"
+            >
+              <div className="relative w-full aspect-[4/3] bg-slate-200 dark:bg-[#1c1108] rounded-lg overflow-hidden border border-slate-200 dark:border-orange-900/20 mb-2 transition-shadow duration-300 group-hover:shadow-lg dark:group-hover:shadow-[0_8px_28px_-4px_rgba(249,115,22,0.15)]">
                 <Image
                   src={d.image}
                   alt={d.title}
                   fill
-                  className="object-cover object-top"
+                  className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                   sizes="33vw"
                 />
               </div>
@@ -84,6 +96,6 @@ export default function DashboardShowcase() {
         </div>
 
       </div>
-    </section>
+    </motion.section>
   );
 }

@@ -1,7 +1,8 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import {
   ArrowRight,
   Download,
@@ -85,6 +86,31 @@ export default function Hero() {
   const scrollTo = (id: string) =>
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
 
+  const [isDesktop, setIsDesktop] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia('(hover: hover) and (pointer: fine)');
+    setIsDesktop(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    mq.addEventListener('change', handler);
+    return () => mq.removeEventListener('change', handler);
+  }, []);
+
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], ['12deg', '-12deg']), { stiffness: 350, damping: 28 });
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], ['-12deg', '12deg']), { stiffness: 350, damping: 28 });
+
+  function handleImageMouseMove({ currentTarget, clientX, clientY }: React.MouseEvent<HTMLDivElement>) {
+    const { left, top, width, height } = currentTarget.getBoundingClientRect();
+    mouseX.set((clientX - left) / width - 0.5);
+    mouseY.set((clientY - top) / height - 0.5);
+  }
+
+  function handleImageMouseLeave() {
+    mouseX.set(0);
+    mouseY.set(0);
+  }
+
   return (
     <section className="relative min-h-screen overflow-hidden px-6 pt-24 pb-16 flex items-center">
       <div className="absolute inset-0 pointer-events-none">
@@ -101,9 +127,21 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.86 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.75, ease: 'easeOut' }}
+            style={isDesktop ? { perspective: '1200px' } : undefined}
             className="relative flex justify-center lg:justify-start"
+            onMouseMove={isDesktop ? handleImageMouseMove : undefined}
+            onMouseLeave={isDesktop ? handleImageMouseLeave : undefined}
           >
-            <div className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-[340px] lg:h-[340px]">
+            <motion.div
+              style={isDesktop ? { rotateX, rotateY, transformStyle: 'preserve-3d' } : undefined}
+              whileHover={isDesktop ? { scale: 1.05 } : undefined}
+              transition={{ type: 'spring', stiffness: 350, damping: 28 }}
+              className="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-[340px] lg:h-[340px] group cursor-default"
+            >
+              {isDesktop && (
+                <div className="profile-spin-ring absolute inset-[-12px] rounded-full border-2 border-dashed border-blue-400/60 dark:border-orange-500/60 pointer-events-none" />
+              )}
+
               <svg
                 className="absolute inset-0 text-blue-500 dark:text-orange-500 pointer-events-none"
                 style={{ overflow: 'visible' }}
@@ -115,7 +153,9 @@ export default function Hero() {
                 <circle cx="-70" cy="390" r="6" fill="currentColor" />
               </svg>
 
-              <div className="absolute inset-0 rounded-full border-[3px] border-blue-400 dark:border-orange-500 shadow-[0_0_70px_rgba(99,102,241,0.40)] dark:shadow-[0_0_70px_rgba(249,115,22,0.45)]" />
+              <div className={`absolute inset-0 rounded-full border-[3px] border-blue-400 dark:border-orange-500
+                shadow-[0_0_70px_rgba(99,102,241,0.40)] dark:shadow-[0_0_70px_rgba(249,115,22,0.45)]
+                pointer-events-none${isDesktop ? ' group-hover:shadow-[0_0_130px_rgba(99,102,241,0.72)] dark:group-hover:shadow-[0_0_130px_rgba(249,115,22,0.78)] transition-shadow duration-500' : ''}`} />
 
               <div className="absolute inset-[4px] overflow-hidden rounded-full">
                 <Image
@@ -123,10 +163,11 @@ export default function Hero() {
                   alt="Sri Shreya Danda"
                   fill
                   priority
-                  className="object-cover object-top scale-[1.08]"
+                  className={`object-cover object-top scale-[1.08]${isDesktop ? ' group-hover:scale-[1.15] transition-transform duration-500 ease-out' : ''}`}
                 />
+                {isDesktop && <div className="profile-shimmer absolute inset-0 pointer-events-none" />}
               </div>
-            </div>
+            </motion.div>
           </motion.div>
 
           <div className="relative min-h-[560px] flex items-center justify-center lg:justify-start">

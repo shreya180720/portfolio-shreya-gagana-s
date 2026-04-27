@@ -27,8 +27,12 @@ const STATS = [
 
 export default function Insights() {
   return (
-    <section
+    <motion.section
       id="insights"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.05 }}
+      transition={{ duration: 0.55, ease: 'easeOut' }}
       className="py-14 px-6 border-y border-slate-200/60 dark:border-orange-900/20 bg-transparent dark:bg-[#1c1108]"
     >
       <div className="max-w-5xl mx-auto">
@@ -46,6 +50,8 @@ export default function Insights() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: i * 0.06 }}
+              whileHover={{ y: -5, transition: { type: 'spring', stiffness: 350, damping: 25 } }}
+              className="cursor-default"
             >
               <div className="font-poppins font-bold text-3xl text-blue-600 dark:text-orange-400 mb-1">
                 {s.stat}
@@ -60,6 +66,6 @@ export default function Insights() {
           ))}
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

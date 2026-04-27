@@ -21,7 +21,14 @@ const fade = (delay = 0) => ({
 
 export default function FeaturedWork() {
   return (
-    <section id="featured-work" className="py-20 px-6 bg-transparent dark:bg-[#1c1108]">
+    <motion.section
+      id="featured-work"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.05 }}
+      transition={{ duration: 0.55, ease: 'easeOut' }}
+      className="py-20 px-6 bg-transparent dark:bg-[#1c1108]"
+    >
       <div className="max-w-5xl mx-auto">
 
         <motion.div {...fade()} className="mb-8">
@@ -82,9 +89,10 @@ export default function FeaturedWork() {
             </p>
             <div className="space-y-0">
               {OUTCOMES.map((o, i) => (
-                <div
+                <motion.div
                   key={o.stat}
-                  className={`py-5 ${i < OUTCOMES.length - 1 ? 'border-b border-slate-100 dark:border-orange-900/20' : ''}`}
+                  whileHover={{ x: 4, transition: { type: 'spring', stiffness: 300, damping: 25 } }}
+                  className={`py-5 cursor-default ${i < OUTCOMES.length - 1 ? 'border-b border-slate-100 dark:border-orange-900/20' : ''}`}
                 >
                   <div className="font-poppins font-bold text-2xl text-blue-600 dark:text-orange-400 mb-1">
                     {o.stat}
@@ -92,13 +100,13 @@ export default function FeaturedWork() {
                   <div className="font-inter text-xs text-slate-500 dark:text-[#a07850] leading-relaxed">
                     {o.label}
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </motion.div>
 
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

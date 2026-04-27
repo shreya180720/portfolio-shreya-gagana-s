@@ -90,7 +90,14 @@ const fadeUp = (delay = 0) => ({
 
 export default function Skills() {
   return (
-    <section id="skills" className="py-20 px-6 bg-transparent dark:bg-[#0f0a03]">
+    <motion.section
+      id="skills"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.05 }}
+      transition={{ duration: 0.55, ease: 'easeOut' }}
+      className="py-20 px-6 bg-transparent dark:bg-[#0f0a03]"
+    >
       <div className="max-w-5xl mx-auto">
 
         <motion.div {...fadeUp()} className="mb-14">
@@ -143,6 +150,6 @@ export default function Skills() {
         </motion.div>
 
       </div>
-    </section>
+    </motion.section>
   );
 }

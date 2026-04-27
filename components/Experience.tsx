@@ -102,7 +102,10 @@ function LogoBadge({ job }: { job: (typeof JOBS)[0] }) {
 
 function ExperienceCard({ job }: { job: (typeof JOBS)[0] }) {
   return (
-    <div className="border border-blue-200 dark:border-orange-500/30 rounded-lg p-5 bg-white/75 backdrop-blur-sm dark:bg-[#100c00] dark:backdrop-blur-none w-full shadow-sm dark:shadow-none">
+    <motion.div
+      whileHover={{ y: -4, transition: { type: 'spring', stiffness: 350, damping: 25 } }}
+      className="border border-blue-200 dark:border-orange-500/30 rounded-lg p-5 bg-white/75 backdrop-blur-sm dark:bg-[#100c00] dark:backdrop-blur-none w-full shadow-sm dark:shadow-none hover:shadow-lg dark:hover:shadow-[0_8px_28px_-4px_rgba(249,115,22,0.15)] transition-shadow duration-300 cursor-default"
+    >
       <p className="text-blue-600 dark:text-orange-400 text-xs font-semibold tracking-wide mb-1.5">
         {job.period}
       </p>
@@ -135,7 +138,7 @@ function ExperienceCard({ job }: { job: (typeof JOBS)[0] }) {
           ))}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -148,7 +151,14 @@ const fadeUp = (delay = 0) => ({
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-20 px-6 bg-transparent dark:bg-[#0d0900]">
+    <motion.section
+      id="experience"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.05 }}
+      transition={{ duration: 0.55, ease: 'easeOut' }}
+      className="py-20 px-6 bg-transparent dark:bg-[#0d0900]"
+    >
       <div className="max-w-6xl mx-auto">
 
         <motion.div {...fadeUp()} className="mb-16">
@@ -228,6 +238,6 @@ export default function Experience() {
         </motion.div>
 
       </div>
-    </section>
+    </motion.section>
   );
 }

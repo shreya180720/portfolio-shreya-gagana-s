@@ -41,7 +41,14 @@ const fade = (delay = 0) => ({
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-20 px-6 bg-transparent dark:bg-[#0f0a03]">
+    <motion.section
+      id="projects"
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.05 }}
+      transition={{ duration: 0.55, ease: 'easeOut' }}
+      className="py-20 px-6 bg-transparent dark:bg-[#0f0a03]"
+    >
       <div className="max-w-5xl mx-auto">
 
         <motion.div {...fade()} className="mb-10">
@@ -55,7 +62,8 @@ export default function Projects() {
             <motion.div
               key={p.title}
               {...fade(i * 0.06)}
-              className="py-7 flex items-start gap-6 md:gap-10"
+              whileHover={{ x: 6, transition: { type: 'spring', stiffness: 300, damping: 25 } }}
+              className="py-7 flex items-start gap-6 md:gap-10 cursor-default"
             >
               <span className="font-inter text-xs text-slate-300 dark:text-[#604830] flex-shrink-0 pt-1 tabular-nums w-5 text-right">
                 {String(i + 1).padStart(2, '0')}
@@ -98,6 +106,6 @@ export default function Projects() {
         </div>
 
       </div>
-    </section>
+    </motion.section>
   );
 }
