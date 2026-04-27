@@ -1,4 +1,4 @@
-<h1 align="center"> Sri Shreya Danda (GaaGa)</h1>
+<h1 align="center"> Sri Shreya Danda </h1>
 
 <p align="center">
   <b>Data Analyst & Business Analyst</b><br/>
@@ -7,7 +7,7 @@
 
 <p align="center">
   🎓 MS Artificial Intelligence & Business Analytics @ USF  
-  📍 Tampa, FL | 💼 Open to Opportunities | 📅 Available June 2026
+  📍 Tampa, FL | 💼 Open to Opportunities 
 </p>
 
 <p align="center">
