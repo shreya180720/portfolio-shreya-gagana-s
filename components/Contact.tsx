@@ -26,11 +26,11 @@ export default function Contact() {
         <motion.div {...fade(0.08)}>
           <div className="divide-y divide-slate-100 dark:divide-orange-900/20">
             <a
-              href="mailto:danda108@usf.edu"
+              href="mailto:shreyadanda18@gmail.com"
               className="flex items-center justify-between py-4 group"
             >
               <span className="font-inter text-sm text-slate-700 dark:text-[#d4a96a] group-hover:text-blue-600 dark:group-hover:text-orange-400 transition-colors">
-                danda108@usf.edu
+                shreyadanda18@gmail.com
               </span>
               <span className="font-inter text-xs text-slate-400 dark:text-[#806040] group-hover:text-blue-500 dark:group-hover:text-orange-400 transition-colors">
                 Email ↗

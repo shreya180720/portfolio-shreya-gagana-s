@@ -1,4 +1,5 @@
 import SiteLoader from '@/components/SiteLoader';
+import UserInteractions from '@/components/UserInteractions';
 
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
@@ -14,6 +15,7 @@ import Footer from '@/components/Footer';
 export default function Home() {
   return (
     <SiteLoader>
+      <UserInteractions />
       <main className="min-h-screen bg-transparent dark:bg-[#0f0a03]">
         <Navbar />
         <Hero />
