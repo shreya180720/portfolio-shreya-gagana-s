@@ -41,7 +41,7 @@ const JOBS = [
     logoBg: '#ffffff',
     role: 'Business Analyst',
     period: 'Mar 2020 – May 2022',
-    location: 'Mumbai, India',
+    location: 'Chennai, India',
     bullets: [
       'Built brokerage revenue intelligence platform across [10,000+] accounts. Top [20%] of clients drove [72%] of total revenue.',
       'Churn signal model using 90-day look-back on trade frequency. Attrition reduced by [18%] post-intervention.',
