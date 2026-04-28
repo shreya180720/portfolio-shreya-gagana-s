@@ -55,7 +55,7 @@ const JOBS = [
     logoBg: '#ffffff',
     role: 'Operational Analyst',
     period: 'Jan 2019 – Feb 2020',
-    location: 'Hyderabad, India',
+    location: 'Kadapa, India',
     bullets: [
       'Inventory analytics dashboard for [500+] SKUs reduced overstock situations by [30%].',
       'Seasonal demand analysis improved procurement planning and boosted margins by [15%].',
