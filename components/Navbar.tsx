@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
@@ -19,9 +19,6 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
-  const logoClickCount = useRef(0);
-  const logoClickTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-
   useEffect(() => { setMounted(true); }, []);
 
   useEffect(() => {
@@ -48,16 +45,7 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <button
-          onClick={() => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            logoClickCount.current += 1;
-            if (logoClickTimer.current) clearTimeout(logoClickTimer.current);
-            logoClickTimer.current = setTimeout(() => { logoClickCount.current = 0; }, 800);
-            if (logoClickCount.current >= 5) {
-              logoClickCount.current = 0;
-              window.dispatchEvent(new CustomEvent('header-tap'));
-            }
-          }}
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           className="font-poppins font-bold text-lg text-slate-900 dark:text-[#fef3e2] tracking-tight"
         >
           Shreya<span className="text-blue-500 dark:text-orange-400">.</span>

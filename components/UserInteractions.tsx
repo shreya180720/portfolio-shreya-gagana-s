@@ -41,6 +41,7 @@ const EVENT_KEYS: Record<string, { message: string; sub: string; particles: stri
 export default function UserInteractions() {
   const [notif, setNotif] = useState<NotifState>({ visible: false, message: '' });
   const [overlayOpen, setOverlayOpen] = useState(false);
+  const [birlaOpen, setBirlaOpen] = useState(false);
   const [pointerTrail, setPointerTrail] = useState<PointerParticle[]>([]);
   const [motionActive, setMotionActive] = useState(false);
   const [eventParticles, setEventParticles] = useState<EventParticle[]>([]);
@@ -149,10 +150,10 @@ export default function UserInteractions() {
   }, []);
 
   useEffect(() => {
-    const handler = () => showNotif('You found me! 👾', "Shreya's easy level secret easter egg 🤫, Try to find other easter eggs too!!");
-    window.addEventListener('header-tap', handler);
-    return () => window.removeEventListener('header-tap', handler);
-  }, [showNotif]);
+    const handler = () => setBirlaOpen(true);
+    window.addEventListener('birla-tap', handler);
+    return () => window.removeEventListener('birla-tap', handler);
+  }, []);
 
 
   return (
@@ -218,6 +219,47 @@ export default function UserInteractions() {
             <button
               onClick={() => setOverlayOpen(false)}
               className="mt-1 px-6 py-2 rounded-lg text-sm font-inter font-medium text-white bg-blue-600 dark:bg-orange-500 hover:bg-blue-500 dark:hover:bg-orange-400 transition-colors"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
+
+      {birlaOpen && (
+        <div
+          className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/60 backdrop-blur-sm"
+          onClick={() => setBirlaOpen(false)}
+        >
+          <div
+            className="bg-white dark:bg-[#1c1108] rounded-2xl p-10 max-w-sm mx-6 text-center shadow-2xl border border-slate-200 dark:border-orange-900/30 ui-overlay-card"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="text-5xl mb-5">🏢</div>
+            <h2 className="font-poppins font-bold text-xl text-slate-900 dark:text-[#fef3e2] mb-4 leading-snug">
+              The place that changed everything
+            </h2>
+            <p className="font-inter text-slate-500 dark:text-[#c49a6c] text-sm leading-relaxed">
+              Some places give you a career.<br />
+              Aditya Birla gave me something far greater!<br /><br />
+              <span className="italic">
+                it gave me the person who rewrote every chapter I thought I already knew.
+              </span><br /><br />
+              Between the projects and the deadlines,
+              somewhere in those Chennai corridors full of numbers and noise 
+              life quietly handed me the one I'd cross seven oceans for 
+              leaving behind family, friends, every familiar shore 
+              and still never once look back.<br /><br />
+              <span className="italic text-slate-400 dark:text-slate-500">
+                only to find the shore had forgotten my name.
+              </span>
+            </p>
+            <p className="font-poppins text-xs font-semibold text-blue-500 dark:text-orange-400 tracking-wide uppercase mt-6 mb-4">
+              chennai · 2023 → USA · 2024-present
+            </p>
+            <button
+              onClick={() => setBirlaOpen(false)}
+              className="px-6 py-2 rounded-lg text-sm font-inter font-medium text-white bg-blue-600 dark:bg-orange-500 hover:bg-blue-500 dark:hover:bg-orange-400 transition-colors"
             >
               Close
             </button>

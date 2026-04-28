@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { useRef } from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Briefcase, Globe, Database, Target } from 'lucide-react';
 
@@ -81,8 +82,22 @@ function highlight(text: string) {
 }
 
 function LogoBadge({ job }: { job: (typeof JOBS)[0] }) {
+  const clickCount = useRef(0);
+  const clickTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleClick = () => {
+    if (job.company !== 'Aditya Birla Capital') return;
+    clickCount.current += 1;
+    if (clickTimer.current) clearTimeout(clickTimer.current);
+    clickTimer.current = setTimeout(() => { clickCount.current = 0; }, 800);
+    if (clickCount.current >= 5) {
+      clickCount.current = 0;
+      window.dispatchEvent(new CustomEvent('birla-tap'));
+    }
+  };
+
   return (
-    <div className="relative w-[88px] h-[88px] flex-shrink-0 z-10">
+    <div className="relative w-[88px] h-[88px] flex-shrink-0 z-10" onClick={handleClick}>
       <div className="absolute inset-0 rounded-full border-2 border-blue-400 dark:border-orange-500 shadow-[0_0_18px_3px_rgba(99,102,241,0.20)] dark:shadow-[0_0_18px_3px_rgba(249,115,22,0.25)]" />
       <div
         className="absolute inset-[3px] rounded-full overflow-hidden"
