@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { X, ChevronDown } from 'lucide-react';
-import { SpotifyCard, defaultSongs } from '@/components/ui/spotify-card';
+// import { X, ChevronDown } from 'lucide-react';
+// import { SpotifyCard, defaultSongs } from '@/components/ui/spotify-card';
 
 interface PointerParticle {
   id: number;
@@ -11,7 +11,7 @@ interface PointerParticle {
   emoji: string;
 }
 
-interface NotifState {
+/* interface NotifState {
   visible: boolean;
   message: string;
   sub?: string;
@@ -22,12 +22,12 @@ interface EventParticle {
   emoji: string;
   x: number;
   delay: number;
-}
+} */
 
 const POINTER_FX = ['⭐', '✨', '💫', '🌟', '⚡'];
 const INACTIVITY_DELAY = 44000;
 
-const EVENT_KEYS: Record<string, { message: string; sub: string; particles: string[] }> = {
+/* const EVENT_KEYS: Record<string, { message: string; sub: string; particles: string[] }> = {
   '0422': {
     message: 'April 22, 2023 🌸',
     sub: 'The day our story began 💕',
@@ -38,26 +38,26 @@ const EVENT_KEYS: Record<string, { message: string; sub: string; particles: stri
     sub: 'The day everything i could never forget',
     particles: ['💍', '🌹', '💎', '✨', '🥂', '💝'],
   },
-};
+}; */
 
 export default function UserInteractions() {
-  const [notif, setNotif] = useState<NotifState>({ visible: false, message: '' });
-  const [gaagaStep, setGaagaStep] = useState<null | 'secret' | 'music'>(null);
-  const [gaagaSongIndex, setGaagaSongIndex] = useState(0);
-  const [birlaOpen, setBirlaOpen] = useState(false);
+  // const [notif, setNotif] = useState<NotifState>({ visible: false, message: '' });
+  // const [gaagaStep, setGaagaStep] = useState<null | 'secret' | 'music'>(null);
+  // const [gaagaSongIndex, setGaagaSongIndex] = useState(0);
+  // const [birlaOpen, setBirlaOpen] = useState(false);
   const [pointerTrail, setPointerTrail] = useState<PointerParticle[]>([]);
   const [motionActive, setMotionActive] = useState(false);
-  const [eventParticles, setEventParticles] = useState<EventParticle[]>([]);
+  // const [eventParticles, setEventParticles] = useState<EventParticle[]>([]);
 
-  const keyBuffer = useRef('');
-  const nameBuffer = useRef('');
+  // const keyBuffer = useRef('');
+  // const nameBuffer = useRef('');
   const inactivityTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const shiftHeld = useRef(false);
   const trailCounter = useRef(0);
-  const particleCounter = useRef(0);
+  // const particleCounter = useRef(0);
   const motionLock = useRef(false);
 
-  const showNotif = useCallback((message: string, sub?: string) => {
+  /* const showNotif = useCallback((message: string, sub?: string) => {
     setNotif({ visible: true, message, sub });
     setTimeout(() => setNotif({ visible: false, message: '' }), 4000);
   }, []);
@@ -72,9 +72,9 @@ export default function UserInteractions() {
     setEventParticles((prev) => [...prev, ...items]);
     const ids = items.map((p) => p.id);
     setTimeout(() => setEventParticles((prev) => prev.filter((p) => !ids.includes(p.id))), 4500);
-  }, []);
+  }, []); */
 
-  useEffect(() => {
+  /* useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (e.ctrlKey && e.altKey && e.code === 'KeyG') {
         e.preventDefault();
@@ -83,12 +83,13 @@ export default function UserInteractions() {
     };
     window.addEventListener('keydown', handler);
     return () => window.removeEventListener('keydown', handler);
-  }, []);
+  }, []); */
 
+  // Kept only for Shift key tracking (required by star trail easter egg)
   useEffect(() => {
     const onDown = (e: KeyboardEvent) => {
       if (e.key === 'Shift') { shiftHeld.current = true; return; }
-      if (/^[0-9]$/.test(e.key)) {
+      /* if (/^[0-9]$/.test(e.key)) {
         keyBuffer.current = (keyBuffer.current + e.key).slice(-4);
         const match = EVENT_KEYS[keyBuffer.current];
         if (match) {
@@ -103,7 +104,7 @@ export default function UserInteractions() {
           setGaagaStep('secret');
           nameBuffer.current = '';
         }
-      }
+      } */
     };
     const onUp = (e: KeyboardEvent) => {
       if (e.key === 'Shift') shiftHeld.current = false;
@@ -114,7 +115,7 @@ export default function UserInteractions() {
       window.removeEventListener('keydown', onDown);
       window.removeEventListener('keyup', onUp);
     };
-  }, [showNotif, fireParticles]);
+  }, []);
 
 
   const resetInactivity = useCallback(() => {
@@ -152,11 +153,11 @@ export default function UserInteractions() {
     return () => window.removeEventListener('mousemove', handler);
   }, []);
 
-  useEffect(() => {
+  /* useEffect(() => {
     const handler = () => setBirlaOpen(true);
     window.addEventListener('birla-tap', handler);
     return () => window.removeEventListener('birla-tap', handler);
-  }, []);
+  }, []); */
 
 
   return (
@@ -171,7 +172,7 @@ export default function UserInteractions() {
         </span>
       ))}
 
-      {eventParticles.map((p) => (
+      {/* eventParticles.map((p) => (
         <span
           key={p.id}
           className="fixed pointer-events-none z-[9989] text-2xl ui-shower"
@@ -179,9 +180,9 @@ export default function UserInteractions() {
         >
           {p.emoji}
         </span>
-      ))}
+      )) */}
 
-      {notif.visible && (
+      {/* notif.visible && (
         <div className="fixed bottom-8 left-1/2 z-[9995] ui-toast">
           <div className="bg-white dark:bg-[#1c1108] border border-slate-200 dark:border-orange-900/50 rounded-2xl px-7 py-4 shadow-2xl text-center min-w-[220px]">
             <p className="font-poppins font-bold text-slate-900 dark:text-[#fef3e2] text-base leading-snug">
@@ -194,9 +195,9 @@ export default function UserInteractions() {
             )}
           </div>
         </div>
-      )}
+      ) */}
 
-      {gaagaStep === 'secret' && (
+      {/* gaagaStep === 'secret' && (
         <div className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/60 backdrop-blur-sm">
           <div
             className="relative bg-white dark:bg-[#1c1108] rounded-2xl p-10 max-w-sm mx-6 text-center shadow-2xl border border-slate-200 dark:border-orange-900/30 ui-overlay-card"
@@ -233,13 +234,13 @@ export default function UserInteractions() {
               <ChevronDown size={20} className="text-white" />
             </button>
             <p className="text-xs text-purple-400 dark:text-purple-300 mt-2 font-inter">
-              see what&apos;s inside
+              see what's inside
             </p>
           </div>
         </div>
-      )}
+      ) */}
 
-      {gaagaStep === 'music' && (
+      {/* gaagaStep === 'music' && (
         <div className="fixed inset-0 z-[10000] overflow-y-auto" style={{ background: 'rgba(6,3,14,0.97)', backdropFilter: 'blur(24px)' }}>
 
           <button
@@ -351,7 +352,7 @@ export default function UserInteractions() {
                     </p>
                     <p className="gaaga-line text-[#EEB4B4]/75 text-sm font-light italic leading-snug"
                       style={{ animationDelay: '1.55s' }}>
-                      I don&apos;t deserve this
+                      I don't deserve this
                     </p>
                     <p className="gaaga-line text-[#EEB4B4] text-base font-semibold italic tracking-wide pt-1"
                       style={{ animationDelay: '1.95s' }}>
@@ -364,9 +365,9 @@ export default function UserInteractions() {
             </div>
           </div>
         </div>
-      )}
+      ) */}
 
-      {birlaOpen && (
+      {/* birlaOpen && (
         <div
           className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/60 backdrop-blur-sm"
           onClick={() => setBirlaOpen(false)}
@@ -386,9 +387,9 @@ export default function UserInteractions() {
                 it gave me the person who rewrote every chapter I thought I already knew.
               </span><br /><br />
               Between the projects and the deadlines,
-              somewhere in those Chennai corridors full of numbers and noise 
-              life quietly handed me the one I'd cross seven oceans for 
-              leaving behind family, friends, every familiar shore 
+              somewhere in those Chennai corridors full of numbers and noise
+              life quietly handed me the one I'd cross seven oceans for
+              leaving behind family, friends, every familiar shore
               and still never once look back.<br /><br />
               <span className="italic text-slate-400 dark:text-slate-500">
                 only to find the shore had forgotten my name.
@@ -405,7 +406,7 @@ export default function UserInteractions() {
             </button>
           </div>
         </div>
-      )}
+      ) */}
 
       {motionActive && (
         <div className="fixed bottom-0 left-0 right-0 z-[9994] pointer-events-none overflow-hidden h-24">
@@ -447,26 +448,26 @@ export default function UserInteractions() {
         }
         .ui-trail { animation: ui-trail-fade 0.9s ease-out forwards; }
 
-        @keyframes ui-shower-fall {
+        /* @keyframes ui-shower-fall {
           0%   { opacity: 1;   transform: translateY(0)     rotate(0deg);   }
           100% { opacity: 0.2; transform: translateY(105vh) rotate(420deg); }
         }
-        .ui-shower { animation: ui-shower-fall 3.5s ease-in forwards; }
+        .ui-shower { animation: ui-shower-fall 3.5s ease-in forwards; } */
 
-        @keyframes ui-toast-in {
+        /* @keyframes ui-toast-in {
           from { opacity: 0; transform: translateX(-50%) translateY(14px) scale(0.95); }
           to   { opacity: 1; transform: translateX(-50%) translateY(0)    scale(1);    }
         }
         .ui-toast {
           transform: translateX(-50%);
           animation: ui-toast-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
+        } */
 
-        @keyframes ui-overlay-in {
+        /* @keyframes ui-overlay-in {
           from { opacity: 0; transform: scale(0.88) translateY(12px); }
           to   { opacity: 1; transform: scale(1)    translateY(0);    }
         }
-        .ui-overlay-card { animation: ui-overlay-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        .ui-overlay-card { animation: ui-overlay-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards; } */
 
         @keyframes ui-motion-walk {
           from { left: -100px; }
@@ -480,7 +481,7 @@ export default function UserInteractions() {
         }
         .ui-motion-bounce { animation: ui-motion-bounce 0.28s infinite linear; }
 
-        @keyframes gaaga-glow-breathe {
+        /* @keyframes gaaga-glow-breathe {
           0%, 100% { box-shadow: 0 0 28px rgba(109,40,217,0.18), 0 24px 52px rgba(0,0,0,0.45); }
           50%      { box-shadow: 0 0 56px rgba(109,40,217,0.34), 0 0 22px rgba(219,39,119,0.12), 0 24px 58px rgba(0,0,0,0.5); }
         }
@@ -585,7 +586,7 @@ export default function UserInteractions() {
             animation: none !important;
           }
           .gaaga-poster-glow, .gaaga-poster-glow-pink { transition: none; }
-        }
+        } */
       `}</style>
     </>
   );
