@@ -25,7 +25,7 @@ const JOBS = [
     company: 'Centene Corporation',
     logo: '/images/centene-logo.jpg',
     logoBg: '#1b5276',
-    role: 'IT Analyst',
+    role: 'IT Data Analyst',
     period: 'Jun 2022 – Dec 2023',
     location: 'Tampa, FL',
     bullets: [
@@ -53,7 +53,7 @@ const JOBS = [
     company: 'Sri Vijaya Durga Automotives',
     logo: '/images/vijayadurga_logo.png',
     logoBg: '#ffffff',
-    role: 'Operational Analyst',
+    role: 'Business & Operational Analyst',
     period: 'Jan 2019 – Feb 2020',
     location: 'Cuddapah, India',
     bullets: [
