@@ -4,6 +4,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
+import { useTheme } from 'next-themes';
 import {
   ArrowRight,
   Download,
@@ -208,6 +209,11 @@ export default function Hero() {
     return () => mq.removeEventListener('change', handler);
   }, []);
 
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  const { resolvedTheme } = useTheme();
+  const isDark = !mounted || resolvedTheme !== 'light';
+
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], ['12deg', '-12deg']), { stiffness: 350, damping: 28 });
@@ -270,15 +276,39 @@ export default function Hero() {
                 shadow-[0_0_70px_rgba(99,102,241,0.40)] dark:shadow-[0_0_70px_rgba(249,115,22,0.45)]
                 pointer-events-none${isDesktop ? ' group-hover:shadow-[0_0_130px_rgba(99,102,241,0.72)] dark:group-hover:shadow-[0_0_130px_rgba(249,115,22,0.78)] transition-shadow duration-500' : ''}`} />
 
-              <div className="absolute inset-[4px] overflow-hidden rounded-full">
-                <Image
-                  src="/images/GaaGa_img2.png"
-                  alt="Sri Shreya Danda"
-                  fill
-                  priority
-                  className={`object-cover object-top scale-[1.08]${isDesktop ? ' group-hover:scale-[1.15] transition-transform duration-500 ease-out' : ''}`}
-                />
-                {isDesktop && <div className="profile-shimmer absolute inset-0 pointer-events-none" />}
+              <div className="absolute inset-[4px]" style={{ perspective: '1200px' }}>
+                <motion.div
+                  animate={{ rotateY: isDark ? 0 : 180 }}
+                  transition={{ type: 'spring', stiffness: 65, damping: 16 }}
+                  style={{ transformStyle: 'preserve-3d', width: '100%', height: '100%', position: 'relative' }}
+                >
+                  {/* Dark mode — front face */}
+                  <div
+                    className="absolute inset-0 overflow-hidden rounded-full"
+                    style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
+                  >
+                    <Image
+                      src="/images/GaaGa_img2.png"
+                      alt="Sri Shreya Danda"
+                      fill
+                      priority
+                      className={`object-cover object-top scale-[1.08]${isDesktop ? ' group-hover:scale-[1.15] transition-transform duration-500 ease-out' : ''}`}
+                    />
+                  </div>
+                  {/* Light mode — back face */}
+                  <div
+                    className="absolute inset-0 overflow-hidden rounded-full"
+                    style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
+                  >
+                    <Image
+                      src="/images/shreya_lightmode.png"
+                      alt="Sri Shreya Danda"
+                      fill
+                      priority
+                      className={`object-cover object-top scale-[1.08]${isDesktop ? ' group-hover:scale-[1.15] transition-transform duration-500 ease-out' : ''}`}
+                    />
+                  </div>
+                </motion.div>
               </div>
             </motion.div>
           </motion.div>

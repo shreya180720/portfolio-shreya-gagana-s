@@ -359,21 +359,3 @@ body {
   opacity: 1;
 }
 
-@keyframes shimmer-sweep {
-  0%   { transform: translateX(-150%) skewX(-15deg); opacity: 0; }
-  35%  { opacity: 1; }
-  100% { transform: translateX(150%) skewX(-15deg); opacity: 0; }
-}
-
-.profile-shimmer {
-  background: linear-gradient(
-    105deg,
-    transparent 30%,
-    rgba(255, 255, 255, 0.18) 50%,
-    transparent 70%
-  );
-}
-
-.group:hover .profile-shimmer {
-  animation: shimmer-sweep 0.75s ease-in-out forwards;
-}

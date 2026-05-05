@@ -61,6 +61,7 @@ const METHODS = [
   'Regression', 'ETL', 'Data Warehousing',
 ];
 
+
 function SkillCard({ name, Icon }: Skill) {
   return (
     <motion.div
