@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
-// import { X, ChevronDown } from 'lucide-react';
-// import { SpotifyCard, defaultSongs } from '@/components/ui/spotify-card';
+import { X, ChevronDown } from 'lucide-react';
+import { SpotifyCard, defaultSongs } from '@/components/ui/spotify-card';
 
 interface PointerParticle {
   id: number;
@@ -42,15 +42,15 @@ const INACTIVITY_DELAY = 44000;
 
 export default function UserInteractions() {
   // const [notif, setNotif] = useState<NotifState>({ visible: false, message: '' });
-  // const [gaagaStep, setGaagaStep] = useState<null | 'secret' | 'music'>(null);
-  // const [gaagaSongIndex, setGaagaSongIndex] = useState(0);
+  const [gaagaStep, setGaagaStep] = useState<null | 'secret' | 'music'>(null);
+  const [gaagaSongIndex, setGaagaSongIndex] = useState(0);
   // const [birlaOpen, setBirlaOpen] = useState(false);
   const [pointerTrail, setPointerTrail] = useState<PointerParticle[]>([]);
   const [motionActive, setMotionActive] = useState(false);
   // const [eventParticles, setEventParticles] = useState<EventParticle[]>([]);
 
   // const keyBuffer = useRef('');
-  // const nameBuffer = useRef('');
+  const nameBuffer = useRef('');
   const inactivityTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const shiftHeld = useRef(false);
   const trailCounter = useRef(0);
@@ -74,7 +74,7 @@ export default function UserInteractions() {
     setTimeout(() => setEventParticles((prev) => prev.filter((p) => !ids.includes(p.id))), 4500);
   }, []); */
 
-  /* useEffect(() => {
+  useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if (e.ctrlKey && e.altKey && e.code === 'KeyG') {
         e.preventDefault();
@@ -83,7 +83,7 @@ export default function UserInteractions() {
     };
     window.addEventListener('keydown', handler);
     return () => window.removeEventListener('keydown', handler);
-  }, []); */
+  }, []);
 
   // Kept only for Shift key tracking (required by star trail easter egg)
   useEffect(() => {
@@ -97,14 +97,14 @@ export default function UserInteractions() {
           fireParticles(match.particles);
           keyBuffer.current = '';
         }
-      }
+      } */
       if (/^[a-zA-Z]$/.test(e.key) && !e.ctrlKey && !e.altKey && !e.metaKey) {
         nameBuffer.current = (nameBuffer.current + e.key).slice(-5);
         if (nameBuffer.current === 'GaaGa') {
           setGaagaStep('secret');
           nameBuffer.current = '';
         }
-      } */
+      }
     };
     const onUp = (e: KeyboardEvent) => {
       if (e.key === 'Shift') shiftHeld.current = false;
@@ -197,7 +197,7 @@ export default function UserInteractions() {
         </div>
       ) */}
 
-      {/* gaagaStep === 'secret' && (
+      {gaagaStep === 'secret' && (
         <div className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/60 backdrop-blur-sm">
           <div
             className="relative bg-white dark:bg-[#1c1108] rounded-2xl p-10 max-w-sm mx-6 text-center shadow-2xl border border-slate-200 dark:border-orange-900/30 ui-overlay-card"
@@ -234,13 +234,13 @@ export default function UserInteractions() {
               <ChevronDown size={20} className="text-white" />
             </button>
             <p className="text-xs text-purple-400 dark:text-purple-300 mt-2 font-inter">
-              see what's inside
+              see what&apos;s inside
             </p>
           </div>
         </div>
-      ) */}
+      )}
 
-      {/* gaagaStep === 'music' && (
+      {gaagaStep === 'music' && (
         <div className="fixed inset-0 z-[10000] overflow-y-auto" style={{ background: 'rgba(6,3,14,0.97)', backdropFilter: 'blur(24px)' }}>
 
           <button
@@ -352,7 +352,7 @@ export default function UserInteractions() {
                     </p>
                     <p className="gaaga-line text-[#EEB4B4]/75 text-sm font-light italic leading-snug"
                       style={{ animationDelay: '1.55s' }}>
-                      I don't deserve this
+                      I don&apos;t deserve this
                     </p>
                     <p className="gaaga-line text-[#EEB4B4] text-base font-semibold italic tracking-wide pt-1"
                       style={{ animationDelay: '1.95s' }}>
@@ -365,7 +365,7 @@ export default function UserInteractions() {
             </div>
           </div>
         </div>
-      ) */}
+      )}
 
       {/* birlaOpen && (
         <div
@@ -463,11 +463,11 @@ export default function UserInteractions() {
           animation: ui-toast-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         } */
 
-        /* @keyframes ui-overlay-in {
+        @keyframes ui-overlay-in {
           from { opacity: 0; transform: scale(0.88) translateY(12px); }
           to   { opacity: 1; transform: scale(1)    translateY(0);    }
         }
-        .ui-overlay-card { animation: ui-overlay-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards; } */
+        .ui-overlay-card { animation: ui-overlay-in 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 
         @keyframes ui-motion-walk {
           from { left: -100px; }
@@ -481,7 +481,7 @@ export default function UserInteractions() {
         }
         .ui-motion-bounce { animation: ui-motion-bounce 0.28s infinite linear; }
 
-        /* @keyframes gaaga-glow-breathe {
+        @keyframes gaaga-glow-breathe {
           0%, 100% { box-shadow: 0 0 28px rgba(109,40,217,0.18), 0 24px 52px rgba(0,0,0,0.45); }
           50%      { box-shadow: 0 0 56px rgba(109,40,217,0.34), 0 0 22px rgba(219,39,119,0.12), 0 24px 58px rgba(0,0,0,0.5); }
         }
@@ -586,7 +586,7 @@ export default function UserInteractions() {
             animation: none !important;
           }
           .gaaga-poster-glow, .gaaga-poster-glow-pink { transition: none; }
-        } */
+        }
       `}</style>
     </>
   );
