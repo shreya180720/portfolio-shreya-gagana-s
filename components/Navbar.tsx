@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import Link from 'next/link';
+import { Menu, X, Sun, Moon, Film } from 'lucide-react';
 import { useTheme } from 'next-themes';
 
 const NAV_LINKS = [
@@ -74,6 +75,13 @@ export default function Navbar() {
               {isDark ? <Sun size={17} /> : <Moon size={17} />}
             </button>
           )}
+          <Link
+            href="/cinematic"
+            className="group inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-inter font-medium border border-orange-500/35 bg-orange-500/5 text-orange-400 hover:border-orange-500/65 hover:bg-orange-500/10 hover:text-orange-300 transition-all duration-200 shadow-[0_0_14px_rgba(249,115,22,0.12)] hover:shadow-[0_0_22px_rgba(249,115,22,0.22)]"
+          >
+            <Film size={14} className="transition-transform duration-200 group-hover:scale-110" />
+            Cinematic View
+          </Link>
           <a
             href="mailto:shreyadanda18@gmail.com"
             className="inline-flex items-center px-4 py-2 rounded-lg text-sm font-inter font-medium text-white bg-blue-600 dark:bg-orange-500 hover:bg-blue-500 dark:hover:bg-orange-400 transition-colors"
@@ -114,6 +122,13 @@ export default function Navbar() {
                 {l.label}
               </button>
             ))}
+            <Link
+              href="/cinematic"
+              className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-inter font-medium border border-orange-500/35 bg-orange-500/5 text-orange-400"
+            >
+              <Film size={14} />
+              Cinematic View
+            </Link>
             <a
               href="mailto:danda108@usf.edu"
               className="mt-1 px-4 py-2.5 rounded-lg text-sm font-inter font-medium text-white text-center bg-blue-600 dark:bg-orange-500"
